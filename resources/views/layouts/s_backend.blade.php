@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>@yield('title')</title>
     <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
@@ -20,9 +19,6 @@
     <link rel="stylesheet" href="{{asset('assets/css/plugins/prism-coy.css')}}">
     <link rel="icon" href="{{asset('assets/images/favicon.ico')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-
-
-
 </head>
 
 <body>

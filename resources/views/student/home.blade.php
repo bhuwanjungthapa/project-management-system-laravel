@@ -14,99 +14,79 @@
                         <div class="card-body">
                             {{--             main body                    --}}
 
-
                             <div class="alert alert-info mb-0" role="alert">
                                 @if($users)
                                     <span>
-
                                         <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Student</th>
-                                        <th>project</th>
-                                        <th>topic</th>
-                                        <th>Feedback</th>
-                                        <th>language_tools_project_id</th>
-                                        <th>supervisor_approval_key</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($users as $user)
-
-                                       <tr>
-                                            <td>{{$loop->index+1}}</td>
-
-                                           <td>{{\Illuminate\Support\Facades\DB::table('students')->where('id', $user->student_id)->value('name')}}</td>
-                                           <td>{{\Illuminate\Support\Facades\DB::table('projects')->where('id', $user->project_id)->value('title')}}</td>
-
-                                           <td>{{$user->topic}}</td>
-                                            <td>{{ $user->feedback }}</td>
-                                           <td>{{\Illuminate\Support\Facades\DB::table('language_tools_project')->where('id', $user->language_tools_project_id)->value('language')}}</td>
-
-                                           <td>
-                                               @if($user->supervisor_approval_key==0)
-                                                   <span class="text-success">Pending</span>
-                                               @elseif($user->supervisor_approval_key==1)
-                                                   <span class="text-danger"> Not Approved</span>
-                                               @else
-                                                   <span class="text-success">Approved</span>
-                                               @endif
-                                           </td>
-                                       </tr>
-
-{{--                                        <tr>--}}
-
-{{--                                        <td>{{$loop->index+1}}</td>--}}
-
-{{--                                             <td>{{DB::table('students')->where('id', $record)->get('name')}}</td>--}}
-{{--                                             <td>{{DB::table('projects')->where('id', $record)->get('title')}}</td>--}}
-{{--                                            <td>{{DB::table('log_sheets')->where('student_id',$record)->get('topic')}}</td>--}}
-
-{{--                                            <td>--}}
-{{--                                                @if(DB::table('log_sheets')->where('student_id', $record)->get('supervisor_approval_key')==0)--}}
-{{--                                                    <span class="text-success">Pending</span>--}}
-{{--                                                @elseif(DB::table('log_sheets')->where('student_id', $record)->get('supervisor_approval_key')==1)--}}
-{{--                                                    <span class="text-danger"> Not Approved</span>--}}
-{{--                                                @else--}}
-{{--                                                    <span class="text-success">Approved</span>--}}
-{{--                                                @endif--}}
-{{--                                            </td>--}}
-
-                                    @endforeach
-                                    </tbody>
-                                </table>
-
+                                             <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Student</th>
+                                                    <th>project</th>
+                                                    <th>topic</th>
+                                                    <th>Feedback</th>
+                                                    <th>language_tools_project_id</th>
+                                                    <th>supervisor_approval_key</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($users as $user)
+                                                   <tr>
+                                                       <td>{{$loop->index+1}}</td>
+                                                       <td>{{\Illuminate\Support\Facades\DB::table('students')->where('id', $user->student_id)->value('name')}}</td>
+                                                       <td>{{\Illuminate\Support\Facades\DB::table('projects')->where('id', $user->project_id)->value('title')}}</td>
+                                                       <td>{{$user->topic}}</td>
+                                                       <td>{{ $user->feedback }}</td>
+                                                       <td>{{\Illuminate\Support\Facades\DB::table('language_tools_project')->where('id', $user->language_tools_project_id)->value('language')}}</td>
+                                                       <td>
+                                                           @if($user->supervisor_approval_key==0)
+                                                               <span class="text-success">Pending</span>
+                                                           @elseif($user->supervisor_approval_key==1)
+                                                               <span class="text-danger"> Not Approved</span>
+                                                           @else
+                                                               <span class="text-success">Approved</span>
+                                                           @endif
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </span>
-                                @else
-                                    <span>Yo have  no logs data</span>
                                 @endif
                             </div>
 
-                            <div>
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add logs</button>
-                                <!-- Modal -->
-                                <div class="modal fade" id="myModal" role="dialog">
-                                    <div class="modal-dialog">
-                                        <!-- Modal content-->
-                                        <div class="modal-content">
-                                            <div class="modal-header">
+{{--                            <div>--}}
+{{--                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add logs</button>--}}
+{{--                                <!-- Modal -->--}}
+{{--                                <div class="modal fade" id="myModal" role="dialog">--}}
+{{--                                    <div class="modal-dialog">--}}
+{{--                                        <!-- Modal content-->--}}
+{{--                                        <div class="modal-content">--}}
+{{--                                            <div class="modal-header">--}}
 
-                                                <h4 class="modal-title">Logs Form</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Some text in the modal.</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                                <h4 class="modal-title">Logs Form</h4>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="modal-body">--}}
+{{--                            --}}{{--              Pop up Form                                  --}}
+{{--                                                <div>--}}
+{{--                                                    <div class="row">--}}
+{{--                                                        {!!Form::open(['route' => [$base_route.'store'],'method'=>'post'])!!}--}}
+{{--                                                        @include($base_view .'main_form',['button'=>'Save'])--}}
+{{--                                                        {{Form::close()}}--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                            --}}{{--              Pop up Form Ends                               --}}
+{{--                                            </div>--}}
+{{--                                            <div class="modal-footer">--}}
+{{--                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
 
-                                {{--             main body  ends                 --}}
-                            </div>
+{{--                                --}}{{--             main body  ends                 --}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </div>

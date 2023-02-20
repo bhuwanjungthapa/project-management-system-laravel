@@ -17,7 +17,7 @@ input::-webkit-inner-spin-button {
      <div class="col-xl-12 col-md-12">
          <div class="card table-card">
              <div class="card-header">
-                 <h5>Batche</h5>
+                 <h5>Batch</h5>
              </div>
              <div class="col-xl-12 col-md-12">
                  <div class="row">

@@ -17,18 +17,15 @@ class RoleSeeder extends Seeder
     {
         DB::table('roles')->insert([
             'id'=>1,
-            'title'=>'Admin',
-
+            'title'=>'Admin'
             ]);
         DB::table('roles')->insert([
             'id'=>2,
-            'title'=>'Supervisor',
-
+            'title'=>'Supervisor'
         ]);
         DB::table('roles')->insert([
             'id'=>3,
-            'title'=>'Student',
-
+            'title'=>'Student'
         ]);
             }
 }

@@ -2,7 +2,7 @@
 
     <div class="form-group">
         {!!Form::label('project_id','Project')!!}
-        {!!Form::select('project_id',$data['project'],null,['class'=> 'form-control'])!!}
+        {!!Form::select('project_id',$data['record'],null,['class'=> 'form-control'])!!}
         @error('project_id')
         <span class="text-danger">{{$message}}</span>
         @enderror
@@ -10,7 +10,7 @@
 
     <div class="form-group">
         {!!Form::label('student_id','Student')!!}
-        {!!Form::select('student_id',$data['student'],null,['class'=> 'form-control'])!!}
+        {!!Form::select('student_id',$data['record'],null,['class'=> 'form-control'])!!}
         @error('student_id')
         <span class="text-danger">{{$message}}</span>
         @enderror

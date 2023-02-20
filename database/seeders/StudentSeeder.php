@@ -23,7 +23,6 @@ class StudentSeeder extends Seeder
             'program_id' => 1,
             'user_id' => 2,
             'batch_id' => 2,
-            'created_by' => 1,
         ]);
         DB::table('students')->insert([
             'id'=>2,
@@ -33,7 +32,6 @@ class StudentSeeder extends Seeder
             'program_id' => 2,
             'user_id' => 2,
             'batch_id' => 1,
-            'created_by' => 1,
         ]);
 
         DB::table('students')->insert([
@@ -44,7 +42,6 @@ class StudentSeeder extends Seeder
             'program_id' => 1,
             'user_id' => 2,
             'batch_id' => 2,
-            'created_by' => 1,
         ]);
     }
 }

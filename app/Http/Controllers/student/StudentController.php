@@ -40,7 +40,6 @@ class StudentController extends BackendBaseController
         return view($this->__loadDataToView($this->base_view.'home'),compact('users','data'));
 
     }
-
     public function create()
     {
         $data['log'] = LogSheet::all();
@@ -56,7 +55,7 @@ class StudentController extends BackendBaseController
             'next_meeting_target'=>'required'
         ));
         try{
-            $record=$this->model::create($request->all());
+            $record=LogSheet::create($request->all());
             if($record)
             {
                 request()->session()->flash('success',($this->__loadDataToView($this->module))."Created");
@@ -71,4 +70,36 @@ class StudentController extends BackendBaseController
         return redirect()->route($this->__loadDataToView($this->base_route.'index'));
     }
 
+    public function edit($id)
+    {
+
+        $data['record'] = DB::table('log_sheets')->where('student_id', $id)->select('id','project_id','student_id','topic','feedback','supervisor_approval_key','language_tools_project_id')->get();
+        if(!$data['record']){
+            request()->session()->flash('error',"Error:Invalid Request");
+            return redirect()->route($this->__loadDataToView($this->base_route.'index'));
+        }
+        return view($this->__loadDataToView($this->base_view.'edit '),compact('data'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        try{
+            $data = $this->model->find($id);
+            request()->request->add(['updated_by'=>auth()->user()->id]);
+            if(!$data)
+            {
+                request()->session()->flash('error','Error: Invalid Request');
+                return redirect()->route($this->__loadDataToView($this->base_route.'index'));
+            }
+            if ($data->update($request->all())){
+                $request->session()->flash('success','Updated Successfully!!');
+            }else{
+                $request->session()->flash('error','Update Failed!!');
+            }
+        }catch(\Exception $exception){
+            $request->session()->flash('error','Error: ' . $exception->getMessage());
+        }
+        return redirect()->route($this->__loadDataToView($this->base_route.'index'));
+    }
 }

@@ -35,7 +35,6 @@ class StudentController extends BackendBaseController
                 'name'=>'required',
                 'email'=>'required',
                 'enroll_year'=>'required'
-
             ));
             $request->request->add(['created_by'=>auth()->user()->id]);
             $record=$this->model::create($request->all());
