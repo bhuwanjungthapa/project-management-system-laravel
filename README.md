@@ -23,7 +23,7 @@
 
   <h2>Installation</h2>
   <ol>
-    <li>Clone the repository: `git clone https://github.com/your-repo.git`</li>
+    <li>Clone the repository: `git clone https://github.com/bhuwanjungthapa/project-management-system-laravel`</li>
     <li>Install dependencies: `composer install`</li>
     <li>Configure the database settings in the `.env` file</li>
     <li>Run database migrations: `php artisan migrate`</li>
